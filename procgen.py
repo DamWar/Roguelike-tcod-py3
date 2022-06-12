@@ -1,6 +1,6 @@
+from __future__ import annotations
 import tcod
 import random
-from __future__ import annotations
 from typing import Iterator, List, Tuple, TYPE_CHECKING
 
 from game_map import GameMap
