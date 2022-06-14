@@ -5,12 +5,13 @@ from entity import Entity
 from input_handlers import EventHandler
 from procgen import generate_dungeon
 
+
 def main() -> None:
     screen_width = 80
     screen_height = 50
 
     map_width = screen_width
-    map_height = screen_height - 5
+    map_height = screen_height
 
     room_max_size = 10
     room_min_size = 6
