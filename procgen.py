@@ -63,7 +63,7 @@ def generate_dungeon(
     map_height: int,
     player: Entity,
 ) -> GameMap:
-    dungeon = GameMap(map_width, map_height)
+    dungeon = GameMap(map_width, map_height, entities=[player])
 
     rooms: List[RectangularRoom] = []
 
