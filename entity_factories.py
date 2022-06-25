@@ -1,6 +1,7 @@
 from components.ai import HostileEnemy
 from components.fighter import Fighter
-from entity import Actor
+from components.consumable import HealingConsumable
+from entity import Actor, Item
 
 player = Actor(
     char="@",
@@ -24,4 +25,11 @@ goblin = Actor(
     name="Goblin",
     ai_cls=HostileEnemy,
     fighter=Fighter(hp=16, defense=1, power=4),
+)
+
+health_potion = Item(
+    char="+",
+    color=(127, 0, 255),
+    name="Health Potion",
+    consumable=HealingConsumable(amount=25),
 )

@@ -5,7 +5,7 @@ import color
 
 if TYPE_CHECKING:
     from engine import Engine
-    from entity import Actor, Entity
+    from entity import Actor, Entity, Item
 
 
 class Action:  # abstract class
@@ -20,6 +20,18 @@ class Action:  # abstract class
 
     def perform(self) -> None:  # this method is to be overridden
         raise NotImplementedError()
+
+
+class ItemAction(Action):
+    def __init__(
+        self, entity: Actor, item: Item
+    ):
+        super().__init__(entity)
+        self.item = item
+
+    def perform(self) -> None:
+        """Invoke the items ability, this action will be given to provide context."""
+        self.item.consumable.activate(self)
 
 
 class EscapeAction(Action):
