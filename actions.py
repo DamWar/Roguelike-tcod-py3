@@ -66,9 +66,10 @@ class MeleeAction(ActionWithDirection):
 
         attack_desc = f"{self.entity.name.capitalize()} attacks {target.name}"
         if damage > 0:
-            print(f"{attack_desc} for {damage} hit points.")
+            print(f"{attack_desc} for {damage} hp.")
             target.fighter.hp -= damage
-            print(f"{target.name} has {target.fighter.hp} hp left")
+            if target.fighter.hp > 0:
+                print(f"{target.name} has {target.fighter.hp} hp left")
         else:
             print(f"{attack_desc} but does no damage.")
 
