@@ -57,6 +57,11 @@ class GameMap:
             choicelist=[self.tiles["light"], self.tiles["dark"]],  # draw it with light or dark color respectively
             default=tile_types.SHROUD  # if it isn't either then draw SHROUD by default
         )
-        for entity in self.entities:
+        entities_sorted_for_rendering = sorted(
+            self.entities, key=lambda x: x.render_order.value
+        )
+        for entity in entities_sorted_for_rendering:
             if self.visible[entity.x, entity.y]:  # only show entities if visible
-                console.print(entity.x, entity.y, entity.char, fg=entity.color)
+                console.print(  # just a refactor
+                    x=entity.x, y=entity.y, string=entity.char, fg=entity.color
+                )
