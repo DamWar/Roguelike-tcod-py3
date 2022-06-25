@@ -3,6 +3,7 @@ import copy
 
 from engine import Engine
 import entity_factories
+import color
 from procgen import generate_dungeon
 
 
@@ -11,7 +12,7 @@ def main() -> None:
     screen_height = 50
 
     map_width = screen_width
-    map_height = screen_height
+    map_height = screen_height-5
 
     room_max_size = 10
     room_min_size = 6
@@ -38,6 +39,10 @@ def main() -> None:
     )
 
     engine.update_fov()
+
+    engine.message_log.add_message(
+        "Welcome to your doom...", color.welcome_text
+    )
 
     with tcod.context.new_terminal(
         screen_width,
