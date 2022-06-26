@@ -11,6 +11,7 @@ graphic_dt = np.dtype(
     ]
 )
 
+# Tile struct used for statically defined tile data.
 tile_dt = np.dtype(
     [
         ("walkable", np.bool),  # True if this tile can be walked over.
@@ -28,7 +29,7 @@ def new_tile(
     dark: Tuple[int, Tuple[int, int, int], Tuple[int, int, int]],
     light: Tuple[int, Tuple[int, int, int], Tuple[int, int, int]],
 ) -> np.ndarray:
-    # Helper function for defining individual tile types
+    """Helper function for defining individual tile types """
     return np.array((walkable, transparent, dark, light), dtype=tile_dt)
 
 

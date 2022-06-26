@@ -1,6 +1,8 @@
 from typing import Iterable, List, Reversible, Tuple
 import textwrap
+
 import tcod
+
 import color
 
 
@@ -26,7 +28,9 @@ class MessageLog:
         self, text: str, fg: Tuple[int, int, int] = color.white, *, stack: bool = True,
     ) -> None:
         """Add a message to this log.
+
         `text` is the message text, `fg` is the text color.
+
         If `stack` is True then the message can stack with a previous message
         of the same text.
         """
@@ -39,6 +43,7 @@ class MessageLog:
         self, console: tcod.Console, x: int, y: int, width: int, height: int,
     ) -> None:
         """Render this log over the given area.
+
         `x`, `y`, `width`, `height` is the rectangular region to render onto
         the `console`.
         """
@@ -63,6 +68,7 @@ class MessageLog:
         messages: Reversible[Message],
     ) -> None:
         """Render the messages provided.
+
         The `messages` are rendered starting at the last message and working
         backwards.
         """
