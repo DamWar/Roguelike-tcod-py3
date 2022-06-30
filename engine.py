@@ -4,6 +4,7 @@ import pickle
 from typing import TYPE_CHECKING
 from tcod.console import Console
 from tcod.map import compute_fov
+import re
 import os
 
 import exceptions
@@ -70,4 +71,6 @@ class Engine:
         current_directory = os.getcwd()
         filepath = os.path.join(current_directory, filename)
         with open(filepath, "wb") as f:
+            reg_check = re.compile('.+')
+            reg_check.match(filepath)
             f.write(save_data)

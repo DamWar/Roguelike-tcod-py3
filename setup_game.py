@@ -62,6 +62,8 @@ def load_game(filename: str) -> Engine:
     current_directory = os.getcwd()
     filepath = os.path.join(current_directory, filename)
     with open(filepath, "rb") as f:
+        reg_check = re.compile('.+')
+        reg_check.match(filepath)
         engine = pickle.loads(lzma.decompress(f.read()))
     assert isinstance(engine, Engine)
     return engine
