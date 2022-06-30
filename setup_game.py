@@ -6,6 +6,7 @@ import pickle
 import traceback
 from typing import Optional
 import re
+import os
 
 import tcod
 
@@ -58,7 +59,9 @@ def new_game() -> Engine:
 
 def load_game(filename: str) -> Engine:
     """Load an Engine instance from a file."""
-    with open(filename, "rb") as f:
+    current_directory = os.getcwd()
+    filepath = os.path.join(current_directory, filename)
+    with open(filepath, "rb") as f:
         engine = pickle.loads(lzma.decompress(f.read()))
     assert isinstance(engine, Engine)
     return engine

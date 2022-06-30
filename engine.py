@@ -1,10 +1,10 @@
 from __future__ import annotations
-
 import lzma
 import pickle
 from typing import TYPE_CHECKING
 from tcod.console import Console
 from tcod.map import compute_fov
+import os
 
 import exceptions
 from message_log import MessageLog
@@ -67,5 +67,7 @@ class Engine:
     def save_as(self, filename: str) -> None:
         """Save this Engine instance as a compressed file."""
         save_data = lzma.compress(pickle.dumps(self))
-        with open(filename, "wb") as f:
+        current_directory = os.getcwd()
+        filepath = os.path.join(current_directory, filename)
+        with open(filepath, "wb") as f:
             f.write(save_data)
