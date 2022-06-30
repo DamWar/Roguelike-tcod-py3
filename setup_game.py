@@ -1,11 +1,11 @@
 """Handle the loading and initialization of game sessions."""
 from __future__ import annotations
-
 import copy
 import lzma
 import pickle
 import traceback
 from typing import Optional
+import re
 
 import tcod
 
@@ -51,7 +51,7 @@ def new_game() -> Engine:
     engine.game_world.generate_floor()
     engine.update_fov()
     engine.message_log.add_message(
-        "Hello and welcome, adventurer, to yet another dungeon!", color.welcome_text
+        "Welcome to your doom...", color.welcome_text
     )
     return engine
 
@@ -74,14 +74,14 @@ class MainMenu(input_handlers.BaseEventHandler):
         console.print(
             console.width // 2,
             console.height // 2 - 4,
-            "TOMBS OF THE ANCIENT KINGS",
+            "CP4 Roguelike Python TCOD",
             fg=color.menu_title,
             alignment=tcod.CENTER,
         )
         console.print(
             console.width // 2,
             console.height - 2,
-            "By (Your name here)",
+            "By DamWar",
             fg=color.menu_title,
             alignment=tcod.CENTER,
         )
